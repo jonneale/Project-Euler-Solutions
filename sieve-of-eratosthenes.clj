@@ -5,7 +5,7 @@
   [current-list limit position]
   (if (> (nth current-list position) (Math/sqrt limit))
     current-list
-    (iter-primes (conj (filter (fn[x] (not= 0 
+    (recur (conj (filter (fn[x] (not= 0 
                                       (rem x
                                           (nth current-list position))))
                                current-list)

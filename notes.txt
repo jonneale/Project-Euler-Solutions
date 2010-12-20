@@ -1,0 +1,23 @@
+(defn get-nth-triangle-number
+  [n]
+  (reduce + (range 1 (+ n 1))))
+  
+(defn get-num-divisors
+  [x]
+  (defn get-num-divisors-iter
+    [x iter divisors]
+    (cond (> iter (/ x 2))
+          (conj divisors x)
+          (= 0 (rem x iter))
+          (recur x (+ iter 1) (conj divisors iter))
+          :else
+          (recur x (+ iter 1) divisors)))
+  (get-num-divisors-iter x 1 ()))
+
+(defn get-tri-div
+  [count]
+  (cond (> 5 
+           (get-num-divisors (get-nth-triangle-number count)))
+           count
+        :else
+          (recur (+ count 1))))
