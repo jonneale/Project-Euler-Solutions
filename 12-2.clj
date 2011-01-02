@@ -8,10 +8,8 @@
 
 (defn tri-iter
   [current current-sum number-of-factors]
-  
-  (cond (<= number-of-factors (time (count (get-factors (+ current current-sum)))))
-          (do (println "-----")
-          current)
+  (cond (> (count (get-factors (+ current current-sum))) number-of-factors)
+          current
         :else
           (recur (+ current 1) (+ current current-sum) number-of-factors))))
 
@@ -23,3 +21,8 @@
 ;;   (time (many-tri 200)) 
 ;;   "Elapsed time: 99650.65 msecs"
 ;;   2015
+;; 
+;; 10% increase by playing with the numbers
+;; time (many-tri 200))
+;; "Elapsed time: 90653.7 msecs"
+;; 2015
