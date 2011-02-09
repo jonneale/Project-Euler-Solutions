@@ -2,15 +2,16 @@
 (defn number-to-digit-list
   [n]
   (map #(- (int %1) (int \0)) (str n)))
-(defn naive-power
-  [i power]
-  (raise-a-to-b i power 1 1))
-(defn raise-a-to-b
-  [a b i prod]
-  (cond (> i b)
-          prod
-        :else
-        (recur a b (+ 1 i) (* prod a))))
+
+(defn naive-pow
+  [current max x total]
+  (if (= current max)
+    total    
+    (naive-pow (+ 1 current) max x  (* (bigint total) (bigint x)))))
+
 (defn sum-sequence
-  []
-  (reduce + (map #(naive-power %1 %1) (range 1 1001))))
+  [max]
+  (bigint (reduce + (map #(naive-pow 0 % % 1) (range 1 (+ max 1)))
+)))
+
+
