@@ -1,8 +1,3 @@
-;; N.B. in built exp function converts result to BigDecimal, thus resulting in scientific notation
-(defn number-to-digit-list
-  [n]
-  (map #(- (int %1) (int \0)) (str n)))
-
 (defn naive-pow
   [current max x total]
   (if (= current max)
