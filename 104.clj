@@ -1,6 +1,7 @@
 (defn next-fib
   [[pos now last]]
   [(inc pos) (+ last now) now])
+(def fibs (iterate next-fib [2 1 1]))
 
 (defn string-first-nine
   [number]
@@ -29,7 +30,6 @@
   [number]
   (pandigital? (rem number 1000000000)))
 
-(def fibs (iterate next-fib [2 1 1]))
 
 (def result
   (for [[pos now last] fibs
